@@ -76,6 +76,20 @@ h1:before {
     display: flex;
     flex-direction: column;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.align-right:before {
+    position: absolute;
+    right: -29px;
+    top: -20px;
+    height: 70px;
+    width: 90px;
+    content: '';
+    background: linear-gradient(to right, #002868, #BF0A30);
+    z-index: -1;
 }
 
 .align-right span:last-child {
