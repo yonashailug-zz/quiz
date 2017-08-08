@@ -52,6 +52,13 @@ h1:before {
     padding-top: 20px;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 50px;
+}
+
+.quiz-controls-two .btn {
+    background: transparent;
+    color: #002868;
+    border: 1px solid #002868;
 }
 
 .badge {
