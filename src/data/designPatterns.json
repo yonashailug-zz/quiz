@@ -1,14 +1,13 @@
 {
     "id": 3,
     "name": "Design Patterns",
+    "duration": "30",
     "description": "Design Patterns Quiz including solid principles.",
-    "questions": [
-        {
+    "questions": [{
             "id": 1010,
             "name": "In SOLID principle, O stands for:",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Objects and Variables",
@@ -43,8 +42,7 @@
             "id": 1011,
             "name": "Which pattern defines an interface for creating an object, but let the subclasses decide which class to instantiate. It let the instantiation differ to subclasses.",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Factory Method",
@@ -79,8 +77,7 @@
             "id": 1012,
             "name": "Which pattern attach the additional responsibilities to an object dynamically.It provides a flexible alternative to subclassing for extending functionality.",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Chain of responsibility",
@@ -115,8 +112,7 @@
             "id": 1013,
             "name": "Singleton pattern is a (according to Gang of Four):",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Creational Pattern",
@@ -151,8 +147,7 @@
             "id": 1014,
             "name": "MVC, MVP and MVVP are related to which layer of software architecture?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Data Access Layer",
@@ -187,8 +182,7 @@
             "id": 1015,
             "name": "Which pattern defines a family of algorithms, encapsulate each one, and make them interchangeable. It lets the algorithm vary independently from clients that use it?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Template method",
@@ -223,8 +217,7 @@
             "id": 1016,
             "name": "Which pattern define one to many dependency between objects so that when one object change state, all its dependent are notified and updated automatically?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Chain of responsibility",
@@ -259,8 +252,7 @@
             "id": 1017,
             "name": "Which pattern ensures a class has only one instance, and provide a global access point to it?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Single Class Factory",
@@ -295,8 +287,7 @@
             "id": 1018,
             "name": "Which pattern provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Iterator",
@@ -331,8 +322,7 @@
             "id": 1019,
             "name": "In SOLID principles 'S' stands for:",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Single Responsibility",

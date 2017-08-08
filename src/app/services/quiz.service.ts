@@ -14,9 +14,15 @@ export class QuizService {
 
   getAll() {
     return [
-      { id: 'data/aspnet.json', name: 'Asp.Net' },
-      { id: 'data/csharp.json', name: 'C Sharp' },
-      { id: 'data/designPatterns.json', name: 'Design Patterns' }
+      { 
+        id: 'data/aspnet.json', 
+        name: 'Asp.Net',
+        duration: "30 Minutes" 
+      },
+      { id: 'data/csharp.json', name: 'CSharp',
+     duration: "30 Minutes"  },
+      { id: 'data/designPatterns.json', name: 'Design Patterns',
+     duration: "30 Minutes"  }
     ];
   }
 

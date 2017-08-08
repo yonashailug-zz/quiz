@@ -1,0 +1,15 @@
+.nav {
+    width: 100%;
+    padding: 20px 0px;
+    /* background: -webkit-gradient(linear, left top, left bottom, from(#), to(#BF0A30)); */
+    background: -webkit-linear-gradient(left, #002868, #BF0A30);
+    background: linear-gradient(to right, #002868, #BF0A30);
+    color: #fff;
+}
+
+.brand {
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0 20px;
+    cursor: pointer;
+}

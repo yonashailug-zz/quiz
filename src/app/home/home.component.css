@@ -1,0 +1,35 @@
+.cards {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.card {
+    max-width: 170px;
+    background: #fff;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px 20px 30px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.card:hover button {
+    background: -webkit-linear-gradient(right, #002868, #BF0A30);
+    background: linear-gradient(to left, #002868, #BF0A30);
+}
+
+.card__title {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    line-height: 21px;
+    font-weight: 500;
+}
+
+.card__description {
+    font-size: 14px;
+    font-weight: 300;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}

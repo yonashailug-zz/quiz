@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../services/quiz.service';
 import { HelperService } from '../services/helper.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-quiz',
@@ -36,16 +37,47 @@ export class QuizComponent implements OnInit {
     count: 1
   };
 
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { 
+
+               this.activatedRoute.params.subscribe((params) => {
+
+                let quizName = params['id'];
+
+                if (quizName) {
+
+                  this.quizInit(quizName);
+
+                }
+
+              }, (error) => {
+
+                console.log("error routing");
+      });
+
+  }
 
   ngOnInit() {
+
+  }
+  quizInit(quizName) {
+
     this.quizes = this.quizService.getAll();
-    this.quizName = this.quizes[0].id;
-    this.loadQuiz(this.quizName);
+    this.quizes.forEach(quiz => {
+      if (quizName === quiz.name) {
+        this.quizName = quiz.id;
+        this.loadQuiz(this.quizName);
+      }
+    });
+    if(!this.quizName) {
+      this.router.navigateByUrl("home");
+    }
   }
 
   loadQuiz(quizName: string) {
     this.quizService.get(quizName).subscribe(res => {
+      console.log(res);
       this.quiz = new Quiz(res);
       this.pager.count = this.quiz.questions.length;
     });

@@ -1,6 +1,7 @@
 {
     "id": 2,
     "name": "C# and .Net Framework",
+    "duration": "30",
     "description": "C# and .Net Quiz (contains C#, .Net Framework, Linq, etc.)",
     "config": {
         "shuffleQuestions": true,
@@ -8,13 +9,11 @@
         "allowBack": true,
         "autoMove": true
     },
-    "questions": [
-        {
+    "questions": [{
             "id": 1010,
             "name": "Which of the following assemblies can be stored in Global Assembly Cache?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Private Assemblies",
@@ -49,8 +48,7 @@
             "id": 1011,
             "name": "Which of the following .NET components can be used to remove unused references from the managed heap?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Language Infrastructure",
@@ -91,8 +89,7 @@
             "id": 1012,
             "name": "Which of the following utilities can be used to compile managed assemblies into processor-specific native code?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "gacutil",
@@ -127,8 +124,7 @@
             "id": 1013,
             "name": "Which of the following is NOT an Arithmetic operator in C#.NET?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "** (Double Star)",
@@ -163,8 +159,7 @@
             "id": 1014,
             "name": "Which of the following statements is correct about an interface used in C#.NET?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "If a class implements an interface partially, then it should be an abstract class.",
@@ -199,8 +194,7 @@
             "id": 1015,
             "name": "What does the term <strong>immutable</strong> means in term of string objects?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "We can modify characters included in the string",
@@ -235,8 +229,7 @@
             "id": 1016,
             "name": "Which of the following is NOT a .NET Exception class?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Exception",
@@ -271,8 +264,7 @@
             "id": 1017,
             "name": "In C#.NET if we do not catch the exception thrown at runtime then which of the following will catch it?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Compiler",
@@ -307,8 +299,7 @@
             "id": 1018,
             "name": "Which of the following statements are correct about delegates?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Delegates cannot be used to call a static method of a class.",
@@ -343,8 +334,7 @@
             "id": 1019,
             "name": "Which of the following does NOT represent Integer?",
             "questionTypeId": 1,
-            "options": [
-                {
+            "options": [{
                     "id": 1055,
                     "questionId": 1010,
                     "name": "Char",
