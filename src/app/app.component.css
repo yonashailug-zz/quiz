@@ -5,11 +5,20 @@
     background: -webkit-linear-gradient(left, #002868, #BF0A30);
     background: linear-gradient(to right, #002868, #BF0A30);
     color: #fff;
+    display: flex;
 }
 
 .brand {
     font-weight: 700;
     text-transform: uppercase;
+    padding: 0 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.nav-right {
+    margin-left: auto;
+    font-size: 16px;
     padding: 0 20px;
     cursor: pointer;
 }
