@@ -5,11 +5,12 @@
     "angular-cli": {},
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
         "lint": "tslint \"src/**/*.ts\"",
         "test": "ng test",
         "pree2e": "webdriver-manager update --standalone false --gecko false",
-        "e2e": "protractor"
+        "e2e": "protractor",
+        "postinstall": "ng build --aot -prod",
+        "start": "node server.js"
     },
     "private": true,
     "dependencies": {
@@ -28,6 +29,7 @@
         "@angular/platform-server": "^4.3.1",
         "@angular/router": "^4.3.1",
         "core-js": "^2.4.1",
+        "express": "^4.15.4",
         "karma-phantomjs-launcher": "^1.0.4",
         "node-sass": "^4.5.3",
         "rxjs": "^5.1.0",
@@ -57,5 +59,9 @@
         "tslint": "~5.3.2",
         "typescript": "~2.3.3",
         "webpack": "^3.4.1"
+    },
+    "engines": {
+        "node": "6.11.0",
+        "npm": "3.10.10"
     }
 }
