@@ -1,6 +1,6 @@
 <div class="container">
     <div class="nav">
-        <div class="brand" [routerLink]="['/']" (click)="navigateHome()">Quiz App</div>
+        <div class="brand" [routerLink]="['/']" [ngClass]="{'disabled': !quizStarted}" (click)="navigateHome()">Quiz App</div>
         <div class="nav-right">{{ selectedQuiz }}</div>
     </div>
     <router-outlet></router-outlet>

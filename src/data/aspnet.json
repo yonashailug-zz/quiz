@@ -221,7 +221,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1016,
@@ -256,7 +257,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1017,
@@ -291,7 +293,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1018,
@@ -326,7 +329,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1019,
@@ -361,7 +365,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         }
     ]
 }

@@ -42,7 +42,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1011,
@@ -83,7 +84,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1012,
@@ -118,7 +120,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1013,
@@ -153,7 +156,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1014,
@@ -188,7 +192,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1015,
@@ -223,7 +228,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1016,
@@ -258,7 +264,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1017,
@@ -293,7 +300,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1018,
@@ -328,7 +336,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         },
         {
             "id": 1019,
@@ -363,7 +372,8 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "attempts": 3
         }
     ]
 }

@@ -11,12 +11,20 @@ import { QuizComponent } from './quiz/quiz.component'
 export class AppComponent implements OnInit {
 
   public selectedQuiz: string;
+  public quizStarted: boolean = true;
 
   constructor(private quizNotifier: QuizNotifier) {
 
     this.quizNotifier.quizChanges.subscribe((quizName) => {
 
       this.selectedQuiz = quizName;
+      
+    })
+
+    this.quizNotifier.quizStartedChanges.subscribe((started) => {
+
+      console.log(started);
+      this.quizStarted = started;
       
     })
     

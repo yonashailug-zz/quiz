@@ -39,6 +39,7 @@ export class QuizComponent implements OnInit {
     size: 1,
     count: 1
   };
+  isbackToQuiz: boolean = false;
 
   constructor(private quizService: QuizService,
               private activatedRoute: ActivatedRoute,
@@ -83,6 +84,7 @@ export class QuizComponent implements OnInit {
         this.quizName = quiz.id;
         this.loadQuiz(this.quizName);
         //TODO: disable going to home page menu;
+         this.quizNotifier.setQuizStartState(false);
       }
 
     });
@@ -160,6 +162,15 @@ export class QuizComponent implements OnInit {
   addHintRequired(question: Question) {
     question.isHintRequired = true;
     console.log(question);
+  }
+
+  closeWindow() {
+    var customWindow = window.open('', '_blank', '');
+    customWindow.close();
+  }
+
+  backToQuiz(value) {
+    this.isbackToQuiz = value;
   }
 
 }
