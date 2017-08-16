@@ -171,7 +171,7 @@ export class QuizComponent implements OnInit {
     } else {
         // this.quiz.questions.forEach(x => answers.push({ 'quizId': this.quiz.id, 'questionId': x.id, 'answered': x.answered }));
         this.snackBarService.openSnackBar("Thank you. You've finished!");
-        this.mode = 'result';
+        // this.mode = 'result';
         
     }
     
