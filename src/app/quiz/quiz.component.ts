@@ -4,6 +4,8 @@ import { QuizService } from '../services/quiz.service';
 import { HelperService } from '../services/helper.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
 import { ActivatedRoute, Router } from "@angular/router";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { QuizNotifier } from './../services/quiz.notifier';
 
 @Component({
   selector: 'app-quiz',
@@ -12,6 +14,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   providers: [QuizService]
 })
 export class QuizComponent implements OnInit {
+
   quizes: any[];
   quiz: Quiz = new Quiz(null);
   mode = 'quiz';
@@ -39,13 +42,21 @@ export class QuizComponent implements OnInit {
 
   constructor(private quizService: QuizService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { 
+              private router: Router,
+              private quizNotifier: QuizNotifier) { 
 
                this.activatedRoute.params.subscribe((params) => {
 
                 let quizName = params['id'];
 
                 if (quizName) {
+
+                  if(quizName == 'home') {
+                    this.quizNotifier.setState("");
+                  } else {
+                    this.quizNotifier.setState(quizName);
+                  }
+                  
 
                   this.quizInit(quizName);
 
@@ -61,21 +72,27 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
 
   }
+
   quizInit(quizName) {
 
     this.quizes = this.quizService.getAll();
+
     this.quizes.forEach(quiz => {
+
       if (quizName === quiz.name) {
         this.quizName = quiz.id;
         this.loadQuiz(this.quizName);
       }
+
     });
+
     if(!this.quizName) {
       this.router.navigateByUrl("home");
     }
   }
 
   loadQuiz(quizName: string) {
+
     this.quizService.get(quizName).subscribe(res => {
       console.log(res);
       this.quiz = new Quiz(res);
@@ -100,14 +117,25 @@ export class QuizComponent implements OnInit {
   }
 
   goTo(index: number) {
+    
     if (index >= 0 && index < this.pager.count) {
+      if(index > 0){
+        if(this.quiz.questions[index - 1].attempts > 0) {
+          for(let i = 0; i < this.quiz.questions[index - 1].options.length; i++) {
+            if (this.quiz.questions[index - 1].options[i].selected) {
+              --this.quiz.questions[index - 1].attempts; 
+            }
+          }
+        }
+        console.log("attempts for", this.quiz.questions[index - 1], " is ",this.quiz.questions[index - 1].attempts );
+      }
       this.pager.index = index;
       this.mode = 'quiz';
     }
   }
 
   isAnswered(question: Question) {
-    return question.options.find(x => x.selected) ? 'Answered' : 'Not Answered';
+    return  question.options.find(x => x.selected) ? 'Answered' : 'Not Answered';
   };
 
   isCorrect(question: Question) {
@@ -121,5 +149,12 @@ export class QuizComponent implements OnInit {
     // Post your data to the server here. answers contains the questionId and the users' answer.
     console.log(this.quiz.questions);
     this.mode = 'result';
+  }
+  navigateHome() {
+    this.quizNotifier.setState("");
+  }
+  addHintRequired(question: Question) {
+    question.isHintRequired = true;
+    console.log(question);
   }
 }

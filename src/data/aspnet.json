@@ -36,7 +36,9 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "hint": "hint of this question",
+            "attempts": 3
         },
         {
             "id": 1011,
@@ -71,7 +73,9 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "hint": "hint of this question",
+            "attempts": 3
         },
         {
             "id": 1012,
@@ -106,7 +110,9 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "hint": "hint of this question",
+            "attempts": 3
         },
         {
             "id": 1013,
@@ -141,7 +147,9 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "hint": "hint of this question",
+            "attempts": 3
         },
         {
             "id": 1014,
@@ -176,7 +184,9 @@
                 "id": 1,
                 "name": "Multiple Choice",
                 "isActive": true
-            }
+            },
+            "hint": "hint of this question",
+            "attempts": 3
         },
         {
             "id": 1015,

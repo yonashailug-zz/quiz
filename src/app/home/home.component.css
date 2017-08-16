@@ -2,16 +2,19 @@
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    flex-wrap: wrap;
 }
 
 .card {
-    max-width: 170px;
+    max-width: initial;
+    width: 80%;
     background: #fff;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 20px 20px 30px;
+    padding: 20px;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 0;
+    margin-bottom: 20px;
 }
 
 .card:hover button {
@@ -32,4 +35,19 @@
     font-weight: 300;
     padding-bottom: 20px;
     margin: 0 auto;
+}
+
+@media screen and (min-width: 756px) {
+    .cards {
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        flex-wrap: wrap;
+    }
+    .card {
+        max-width: 170px;
+        width: initial;
+        padding: 20px 20px 30px;
+        margin-right: 30px;
+    }
 }

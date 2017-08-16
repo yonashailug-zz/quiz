@@ -1,3 +1,4 @@
+import { QuizNotifier } from './../services/quiz.notifier';
 import { QuizService } from './../services/quiz.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   public quizes: any[];
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService,
+              private quizNotifier: QuizNotifier) { }
 
   ngOnInit() {
     this.quizes = this.quizService.getAll();
+  }
+
+  public selectedQuiz(quiz) {
+
+    this.quizNotifier.setState(quiz.name);
+
   }
 
 }

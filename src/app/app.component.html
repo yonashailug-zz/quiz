@@ -1,7 +1,7 @@
 <div class="container">
     <div class="nav">
-        <div class="brand" [routerLink]="['/']">Quiz App</div>
-        <div class="nav-right" [routerLink]="['/']">All Subjects</div>
+        <div class="brand" [routerLink]="['/']" (click)="navigateHome()">Quiz App</div>
+        <div class="nav-right">{{ selectedQuiz }}</div>
     </div>
     <router-outlet></router-outlet>
     <!-- <app-quiz></app-quiz> -->

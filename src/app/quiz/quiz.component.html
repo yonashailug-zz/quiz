@@ -8,13 +8,13 @@
 </div> -->
 <div class="quiz">
     <div class="quiz-name">
-        <div class="navigate-back" [routerLink]="['/home']">
+        <div class="navigate-back" [routerLink]="['/home']" (click)="navigateHome()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
         <h1 class="text-sm-center">{{quiz.name}}</h1>
-        <div class="align-right" *ngIf="quiz.duration">
+        <!-- <div class="align-right" *ngIf="quiz.duration">
             <span>{{ quiz.duration }}</span>
             <span>Minutes</span>
-        </div>
+        </div> -->
     </div>
 
     <div *ngIf="mode=='quiz' && quiz">
@@ -22,24 +22,29 @@
             <div class="badge badge-info">Question {{pager.index + 1}} of {{pager.count}}.</div>
             <div class="quiz-container">
                 <!-- <h2>{{pager.index + 1}}. <span [innerHTML]="question.name"></span></h2> -->
-                <h2>Q. <span [innerHTML]="question.name"></span></h2>
+                <h2><span [innerHTML]="question.name"></span></h2>
                 <div class="row text-left options" class="quiz-choose">
-                    <div class="col-md-6" *ngFor="let option of question.options">
+                    <div class="col-md-6" *ngFor="let option of question.options;let i = index;">
                         <div class="option">
                             <label class="" [attr.for]="option.id">
-                <input id="{{option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" />
-                {{option.name}}
-            </label>
+                                  <input id="{{option.id}}" [disabled]="question.attempts < 1" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" />
+                                {{option.name}}  
+                                <!-- <span class="checkbox">
+                                </span> -->
+                            </label>
                         </div>
+                    </div>
+                    <div class="hint-required" *ngIf="question.isHintRequired">
+                        {{ question.hint }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-sm-center" class="quiz-controls-one">
             <!-- <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(0);">First</button> -->
-            <!-- <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.index - 1);">Prev</button> -->
+            <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.index - 1);">Prev</button>
             <button class="btn btn-primary" (click)="goTo(pager.index + 1);">Next</button>
-            <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.count - 1);">Last</button>
+            <!-- <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.count - 1);">Last</button> -->
             <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
         </div>
     </div>
@@ -47,6 +52,11 @@
     <div class="row review" *ngIf="mode=='review'">
         <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
             <div (click)="goTo(index)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{index + 1}}. {{ isAnswered(question) }}</div>
+        </div>
+    </div>
+    <div class="row review" *ngIf="mode=='unanswered'">
+        <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
+            <div (click)="goTo(index);addHintRequired(question);" *ngIf="isAnswered(question) != 'Answered'" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{index + 1}}. {{ isAnswered(question) }}</div>
         </div>
     </div>
     <div class="result" *ngIf="mode=='result'">
@@ -67,6 +77,7 @@
     <div *ngIf="mode!='result'" class="quiz-controls-two">
         <button class="btn btn-default" (click)="mode = 'quiz'">Quiz</button>
         <button class="btn btn-default" (click)="mode = 'review'">Review</button>
-        <button class="btn btn-default" (click)="onSubmit();">Answer</button>
+        <button class="btn btn-default" (click)="mode = 'unanswered'">Unanswered</button>
+        <!-- <button class="btn btn-default" (click)="onSubmit();">Answer</button>  -->
     </div>
 </div>
