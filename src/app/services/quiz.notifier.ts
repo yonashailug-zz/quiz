@@ -5,6 +5,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 export class QuizNotifier {
     quiz = new BehaviorSubject<string>(null);
     quizChanges = this.quiz.asObservable();
+    
 
     constructor() {}
 

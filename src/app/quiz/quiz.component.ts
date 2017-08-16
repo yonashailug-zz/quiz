@@ -25,7 +25,7 @@ export class QuizComponent implements OnInit {
     'autoMove': false,  // if true, it will move to next question automatically when answered.
     'duration': 0,  // indicates the time in which quiz needs to be completed. 0 means unlimited.
     'pageSize': 1,
-    'requiredAll': false,  // indicates if you must answer all the questions before submitting.
+    'requiredAll': true,  // indicates if you must answer all the questions before submitting.
     'richText': false,
     'shuffleQuestions': false,
     'shuffleOptions': false,
@@ -82,6 +82,7 @@ export class QuizComponent implements OnInit {
       if (quizName === quiz.name) {
         this.quizName = quiz.id;
         this.loadQuiz(this.quizName);
+        //TODO: disable going to home page menu;
       }
 
     });
@@ -127,6 +128,7 @@ export class QuizComponent implements OnInit {
             }
           }
         }
+
         console.log("attempts for", this.quiz.questions[index - 1], " is ",this.quiz.questions[index - 1].attempts );
       }
       this.pager.index = index;
@@ -150,11 +152,14 @@ export class QuizComponent implements OnInit {
     console.log(this.quiz.questions);
     this.mode = 'result';
   }
+
   navigateHome() {
     this.quizNotifier.setState("");
   }
+
   addHintRequired(question: Question) {
     question.isHintRequired = true;
     console.log(question);
   }
+
 }
