@@ -203,6 +203,18 @@ lottie-animation-view {
     display: block;
 }
 
+.correct-answer {
+    background: #52dc52;
+}
+
+.wrong-answer {
+    background: #ff9e9e;
+}
+
+.not-answered {
+    background: #dadada;
+}
+
 @media screen and (min-width: 756px) {
     .quiz {
         width: 60%;
