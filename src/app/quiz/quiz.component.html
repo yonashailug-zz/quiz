@@ -72,8 +72,8 @@
     </div>
     <div *ngIf="mode!='result'" class="quiz-controls-two">
         <button class="btn btn-default" (click)="mode = 'quiz';backToQuiz(false);" *ngIf="isbackToQuiz">Back Quiz</button>
-        <button class="btn btn-default" (click)="mode = 'review';backToQuiz(true);">Review</button>
+        <button class="btn btn-default" (click)="mode = 'review';backToQuiz(true);" *ngIf="!isbackToQuiz">Review</button>
         <!-- <button class="btn btn-default" (click)="mode = 'unanswered'">Unanswered</button> -->
-        <button class="btn btn-default" (click)="onSubmit();">Submit</button>
+        <button class="btn btn-default" (click)="onSubmit();" *ngIf="isAllAnsweredTrue">Submit</button>
     </div>
 </div>

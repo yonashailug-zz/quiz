@@ -41,12 +41,14 @@ export class QuizComponent implements OnInit {
     count: 1
   };
   isbackToQuiz: boolean = false;
+  isAllAnsweredTrue: boolean = false;
 
   constructor(private quizService: QuizService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private quizNotifier: QuizNotifier,
-              private snackBarService: SnackBarService) { 
+              private snackBarService: SnackBarService,
+              private formBuilder: FormBuilder) { 
 
                this.activatedRoute.params.subscribe((params) => {
 
@@ -73,6 +75,10 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.isAllAnswered();
+    }, 2000);
 
   }
 
@@ -112,13 +118,18 @@ export class QuizComponent implements OnInit {
   }
 
   onSelect(question: Question, option: Option) {
+
+    console.log(option);
     if (question.questionTypeId === 1) {
       question.options.forEach((x) => { if (x.id !== option.id) x.selected = false; });
     }
 
+    this.isAllAnswered();
+
     if (this.config.autoMove) {
       this.goTo(this.pager.index + 1);
     }
+    
   }
 
   goTo(index: number) {
@@ -148,11 +159,10 @@ export class QuizComponent implements OnInit {
     return question.options.every(x => x.selected === x.isAnswer) ? 'correct' : 'wrong';
   };
 
-  onSubmit() {
+  isAllAnswered() {
 
-    let answers = [];
     let unansweredCounter: number = 0;
-
+    
     this.quiz.questions.forEach( question => {
 
       if(this.isAnswered(question) == "Not Answered") {
@@ -165,19 +175,29 @@ export class QuizComponent implements OnInit {
 
     if(unansweredCounter > 0) {
 
-        this.snackBarService.openSnackBar("Please answer all questions!");
-        return false;
+        // this.snackBarService.openSnackBar("Please answer all questions!");
+        this.isAllAnsweredTrue = false;
 
     } else {
         // this.quiz.questions.forEach(x => answers.push({ 'quizId': this.quiz.id, 'questionId': x.id, 'answered': x.answered }));
-        this.snackBarService.openSnackBar("Thank you. You've finished!");
+        // this.snackBarService.openSnackBar("Thank you. You've finished!");
+        this.isAllAnsweredTrue = true;
         // this.mode = 'result';
         
     }
-    
+
+  }
+
+
+  onSubmit() {
+
+    let answers = [];
 
     // Post your data to the server here. answers contains the questionId and the users' answer.
-    
+    // this.quiz.questions.forEach(x => answers.push({ 'quizId': this.quiz.id, 'questionId': x.id, 'answered': x.answered }));
+    // this.snackBarService.openSnackBar("Thank you. You've finished!");
+    // this.mode = 'result';    
+
   }
 
   navigateHome() {
