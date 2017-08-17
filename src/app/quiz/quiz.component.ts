@@ -182,7 +182,6 @@ export class QuizComponent implements OnInit {
 
       if(this.isAnswered(this.quiz.questions[index - 1]) == 'Not Answered') {
 
-        console.log("not answered");
         this.wrongAnswer = false;
         this.correctAnswer = false;
         return;
