@@ -42,6 +42,12 @@ export class QuizComponent implements OnInit {
   };
   isbackToQuiz: boolean = false;
   isAllAnsweredTrue: boolean = false;
+  correctAnswer: boolean = false;
+  wrongAnswer: boolean = false;
+
+  public lottieConfig: Object;
+  private anim: any;
+  private animationSpeed: number = 1;
 
   constructor(private quizService: QuizService,
               private activatedRoute: ActivatedRoute,
@@ -71,6 +77,12 @@ export class QuizComponent implements OnInit {
 
                 console.log("error routing");
       });
+        
+      this.lottieConfig = {
+            path: 'assets/medal.json',
+            autoplay: true,
+            loop: true
+        };
 
   }
 
@@ -129,26 +141,52 @@ export class QuizComponent implements OnInit {
     if (this.config.autoMove) {
       this.goTo(this.pager.index + 1);
     }
-    
+
   }
 
   goTo(index: number) {
+
+    setTimeout(()=> {
     
-    if (index >= 0 && index < this.pager.count) {
-      if(index > 0){
-        if(this.quiz.questions[index - 1].attempts > 0) {
-          for(let i = 0; i < this.quiz.questions[index - 1].options.length; i++) {
-            if (this.quiz.questions[index - 1].options[i].selected) {
-              --this.quiz.questions[index - 1].attempts; 
+      if (index >= 0 && index < this.pager.count) {
+        if(index > 0){
+          if(this.quiz.questions[index - 1].attempts > 0) {
+            for(let i = 0; i < this.quiz.questions[index - 1].options.length; i++) {
+              if (this.quiz.questions[index - 1].options[i].selected) {
+                --this.quiz.questions[index - 1].attempts; 
+              }
             }
           }
-        }
 
-        console.log("attempts for", this.quiz.questions[index - 1], " is ",this.quiz.questions[index - 1].attempts );
+          console.log("attempts for", this.quiz.questions[index - 1], " is ",this.quiz.questions[index - 1].attempts );
+        }
+        this.pager.index = index;
+        this.mode = 'quiz';
       }
-      this.pager.index = index;
-      this.mode = 'quiz';
-    }
+
+    }, 1000);
+
+  }
+
+  onNext(index: number) {
+
+      
+      if(this.isCorrect(this.quiz.questions[index - 1]) == 'correct') {
+
+        this.correctAnswer = true;
+        setTimeout(()=> {
+          this.correctAnswer = false;
+        }, 1000)
+
+      } else {
+
+        this.wrongAnswer = true;
+        setTimeout(()=> {
+          this.wrongAnswer = false;
+        }, 1000)     
+
+      }
+
   }
 
   isAnswered(question: Question) {
@@ -156,7 +194,9 @@ export class QuizComponent implements OnInit {
   };
 
   isCorrect(question: Question) {
-    return question.options.every(x => x.selected === x.isAnswer) ? 'correct' : 'wrong';
+    if(question){
+      return question.options.every(x => x.selected === x.isAnswer) ? 'correct' : 'wrong';
+    }
   };
 
   isAllAnswered() {
@@ -195,8 +235,8 @@ export class QuizComponent implements OnInit {
 
     // Post your data to the server here. answers contains the questionId and the users' answer.
     // this.quiz.questions.forEach(x => answers.push({ 'quizId': this.quiz.id, 'questionId': x.id, 'answered': x.answered }));
-    // this.snackBarService.openSnackBar("Thank you. You've finished!");
-    // this.mode = 'result';    
+    this.snackBarService.openSnackBar("Thank you. You've finished!");
+    this.mode = 'result';    
 
   }
 
@@ -216,6 +256,10 @@ export class QuizComponent implements OnInit {
 
   backToQuiz(value) {
     this.isbackToQuiz = value;
+  }
+
+  handleAnimation(anim: any) {
+      this.anim = anim;
   }
 
 }

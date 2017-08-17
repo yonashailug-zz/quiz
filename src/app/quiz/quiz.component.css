@@ -189,6 +189,20 @@ input[type="checkbox"]:checked+span.checkbox:after {
     margin-top: 20px;
 }
 
+.quiz-top-container {
+    position: relative;
+}
+
+lottie-animation-view {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: 0 auto;
+    display: block;
+}
+
 @media screen and (min-width: 756px) {
     .quiz {
         width: 60%;

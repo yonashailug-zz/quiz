@@ -11,6 +11,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { HomeComponent } from './home/home.component';
 import { QuizNotifier } from './services/quiz.notifier';
 import { SnackBarService } from './services/snackbar.service';
+import { LottieAnimationViewModule } from 'ng-lottie';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SnackBarService } from './services/snackbar.service';
     BrowserAnimationsModule,
     NoopAnimationsModule,    
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    LottieAnimationViewModule.forRoot()
     // MaterialModule
   ],
   providers: [
