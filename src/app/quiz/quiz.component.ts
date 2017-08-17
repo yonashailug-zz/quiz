@@ -152,57 +152,86 @@ export class QuizComponent implements OnInit {
 
   goTo(index: number) {
 
-    setTimeout(()=> {
+    // setTimeout(()=> {
     
-      if (index >= 0 && index < this.pager.count) {
-        if(index > 0){
-          if(this.quiz.questions[index - 1].attempts > 0) {
-            for(let i = 0; i < this.quiz.questions[index - 1].options.length; i++) {
-              if (this.quiz.questions[index - 1].options[i].selected) {
-                --this.quiz.questions[index - 1].attempts; 
-              }
-            }
-          }
+    //   if (index >= 0 && index < this.pager.count) {
+    //     if(index > 0){
+    //       if(this.quiz.questions[index - 1].attempts > 0) {
+    //         for(let i = 0; i < this.quiz.questions[index - 1].options.length; i++) {
+    //           if (this.quiz.questions[index - 1].options[i].selected) {
+    //             --this.quiz.questions[index - 1].attempts; 
+    //           }
+    //         }
+    //       }
 
-          console.log("attempts for", this.quiz.questions[index - 1], " is ",this.quiz.questions[index - 1].attempts );
-        }
+    //       console.log("attempts for", this.quiz.questions[index - 1], " is ",this.quiz.questions[index - 1].attempts );
+    //     }
+    //     this.pager.index = index;
+    //     this.mode = 'quiz';
+    //   }
+
+    // }, 1000);
+
         this.pager.index = index;
         this.mode = 'quiz';
-      }
-
-    }, 1000);
 
   }
 
   onNext(index: number) {
 
-      
+
+      if(this.isAnswered(this.quiz.questions[index - 1]) == 'Not Answered') {
+
+        console.log("not answered");
+        this.wrongAnswer = false;
+        this.correctAnswer = false;
+        return;
+      }
+
       if(this.isCorrect(this.quiz.questions[index - 1]) == 'correct') {
 
         this.correctAnswer = true;
-        setTimeout(()=> {
+        this.wrongAnswer = false;
+
+        setTimeout(() => {
+
           this.correctAnswer = false;
+          return true;
+
         }, 1000)
 
       } else {
 
-        this.wrongAnswer = true;
-        setTimeout(()=> {
-          this.wrongAnswer = false;
-        }, 1000)     
+        if(this.isCorrect(this.quiz.questions[index - 1]) == 'wrong') {
+
+          this.wrongAnswer = true;
+          this.correctAnswer = false;
+
+          setTimeout(() => {
+
+            this.wrongAnswer = false;
+            return true;
+
+          }, 1000)     
+
+        } 
 
       }
 
   }
 
   isAnswered(question: Question) {
-    return  question.options.find(x => x.selected) ? 'Answered' : 'Not Answered';
+
+    return question.options.find(x => x.selected) ? 'Answered' : 'Not Answered';
+
   };
 
   isCorrect(question: Question) {
-    if(question){
+
+    if(this.isAnswered(question)){
       return question.options.every(x => x.selected === x.isAnswer) ? 'correct' : 'wrong';
     }
+
   };
 
   isAllAnswered() {
