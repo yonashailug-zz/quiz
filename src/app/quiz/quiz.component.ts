@@ -46,6 +46,7 @@ export class QuizComponent implements OnInit {
   wrongAnswer: boolean = false;
 
   public lottieConfig: Object;
+  public lottieConfig2: Object;
   private anim: any;
   private animationSpeed: number = 1;
 
@@ -80,6 +81,11 @@ export class QuizComponent implements OnInit {
         
       this.lottieConfig = {
             path: 'assets/medal.json',
+            autoplay: true,
+            loop: true
+        };
+      this.lottieConfig2 = {
+            path: 'assets/shrug.json',
             autoplay: true,
             loop: true
         };

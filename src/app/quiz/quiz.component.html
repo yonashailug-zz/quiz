@@ -36,8 +36,8 @@
                 </div>
             </div>
         </div>
-        <lottie-animation-view *ngIf="correctAnswer" [options]="lottieConfig" [width]="300" [height]="600" (animCreated)="handleAnimation($event)">
-        </lottie-animation-view>
+        <lottie-animation-view *ngIf="correctAnswer" [options]="lottieConfig" [width]="300" [height]="600" (animCreated)="handleAnimation($event)"></lottie-animation-view>
+        <lottie-animation-view *ngIf="wrongAnswer" [options]="lottieConfig2" [width]="300" [height]="600" (animCreated)="handleAnimation($event)"></lottie-animation-view>
 
         <div class="text-sm-center" class="quiz-controls-one">
             <!-- <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(0);">First</button> -->
