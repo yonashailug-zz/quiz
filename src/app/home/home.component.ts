@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   public quizes: any[];
+  public isQuizChoosen: boolean = false;
+
   constructor(private quizService: QuizService,
               private quizNotifier: QuizNotifier) { }
 
@@ -21,6 +23,7 @@ export class HomeComponent implements OnInit {
   public selectedQuiz(quiz) {
 
     this.quizNotifier.setState(quiz.name);
+    this.isQuizChoosen = true;
 
   }
 

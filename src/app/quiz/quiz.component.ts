@@ -49,6 +49,8 @@ export class QuizComponent implements OnInit {
   public lottieConfig2: Object;
   private anim: any;
   private animationSpeed: number = 1;
+  public correctAnswerCount: number = 0;
+  public quizPassMark: number = 7;
 
   constructor(private quizService: QuizService,
               private activatedRoute: ActivatedRoute,
@@ -64,7 +66,9 @@ export class QuizComponent implements OnInit {
                 if (quizName) {
 
                   if(quizName == 'home') {
+
                     this.quizNotifier.setState("");
+                    
                   } else {
                     this.quizNotifier.setState(quizName);
                   }
@@ -123,7 +127,7 @@ export class QuizComponent implements OnInit {
   loadQuiz(quizName: string) {
 
     this.quizService.get(quizName).subscribe(res => {
-      console.log(res);
+
       this.quiz = new Quiz(res);
       this.pager.count = this.quiz.questions.length;
     });
@@ -137,7 +141,6 @@ export class QuizComponent implements OnInit {
 
   onSelect(question: Question, option: Option) {
 
-    console.log(option);
     if (question.questionTypeId === 1) {
       question.options.forEach((x) => { if (x.id !== option.id) x.selected = false; });
     }
@@ -268,7 +271,19 @@ export class QuizComponent implements OnInit {
     let answers = [];
 
     // Post your data to the server here. answers contains the questionId and the users' answer.
-    // this.quiz.questions.forEach(x => answers.push({ 'quizId': this.quiz.id, 'questionId': x.id, 'answered': x.answered }));
+    this.quiz.questions.forEach(x => { 
+
+      if(this.isCorrect(x) == 'correct') {
+        this.correctAnswerCount++;
+      }
+
+      answers.push({ 
+        'quizId': this.quiz.id, 
+        'questionId': x.id, 
+        'answered': x.answered 
+      })
+    });
+
     this.snackBarService.openSnackBar("Thank you. You've finished!");
     this.mode = 'result';    
 
@@ -280,7 +295,7 @@ export class QuizComponent implements OnInit {
 
   addHintRequired(question: Question) {
     question.isHintRequired = true;
-    console.log(question);
+
   }
 
   closeWindow() {

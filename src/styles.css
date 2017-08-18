@@ -25,6 +25,10 @@ h1 {
     text-transform: uppercase;
 }
 
+a {
+    color: #BF0A30;
+}
+
 .option {
     font-size: 20px;
     padding: 10px;

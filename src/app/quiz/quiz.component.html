@@ -63,6 +63,7 @@
     </div>
     <div class="result" *ngIf="mode=='result'">
         <h2>Thank you for taking a quiz.</h2>
+        <h3>Your score is: {{correctAnswerCount}} out of {{ quiz.questions.length }} - <span class="p">{{ correctAnswerCount > quizPassMark? 'You passed!' : 'You failed!' }}</span></h3>
         <!-- <h2>Quiz Result</h2>  -->
         <!-- <div *ngFor="let question of quiz.questions; let index = index">
             <div class="result-question">
@@ -75,7 +76,8 @@
                 <div class="alert {{ isCorrect(question) == 'correct'? 'alert-success': 'alert-danger'}}">Your answer is {{isCorrect(question)}}.</div>
             </div>
         </div> -->
-        <a class="alert alert-info text-sm-center" (click)="closeWindow();">Close this window now.</a>
+        <a class="alert alert-info text-sm-center text-link" (click)="closeWindow();">Close this window now or </a>
+        <a class="alert alert-info text-sm-center text-link" [routerLink]="['/']">Go to main page.</a>
     </div>
     <div *ngIf="mode!='result'" class="quiz-controls-two">
         <button class="btn btn-default" (click)="mode = 'quiz';backToQuiz(false);" *ngIf="isbackToQuiz">Back Quiz</button>

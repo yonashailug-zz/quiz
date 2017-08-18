@@ -189,6 +189,10 @@ input[type="checkbox"]:checked+span.checkbox:after {
     margin-top: 20px;
 }
 
+.text-link {
+    cursor: pointer;
+}
+
 .quiz-top-container {
     position: relative;
 }

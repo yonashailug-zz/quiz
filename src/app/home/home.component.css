@@ -17,6 +17,11 @@
     margin-bottom: 20px;
 }
 
+.card.disable {
+    pointer-events: none;
+    background: #e6e6e6;
+}
+
 .card:hover button {
     background: -webkit-linear-gradient(right, #002868, #BF0A30);
     background: linear-gradient(to left, #002868, #BF0A30);
